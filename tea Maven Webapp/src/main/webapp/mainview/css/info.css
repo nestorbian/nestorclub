@@ -1,0 +1,45 @@
+@CHARSET "UTF-8";
+.main{
+	margin: 150px auto;
+	width: 60%;
+	text-align: center;
+	display: block;
+}
+.main .info{
+	color: orange;
+	font-size: 40px;
+}
+.main .each{
+	margin-top: 15px;
+	vertical-align: middle;
+}
+.main input{
+	color: black;
+	outline: none;
+	border-radius:5px;
+	font-size: 20px;
+	font-weight: bold;
+}
+.main textarea{
+	color: black;
+	outline: none;
+	border-radius:5px;
+	font-weight: bold;
+}
+.main .sp{
+    color: white;
+    font-size: 22px;
+}
+.main .save{
+	width: 100px;
+	height: 50px;
+	border:none;
+	border-radius:8px;
+}
+.main .save:HOVER {
+	color: gray;
+}
+#fh5co-footer{
+	display: block;
+	margin-top: -200px;
+}

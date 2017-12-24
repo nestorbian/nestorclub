@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jstu.dao.CartMapper" >
+  <resultMap id="BaseResultMap" type="com.jstu.model.Cart" >
+    <id column="cartid" property="cartid" jdbcType="INTEGER" />
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="goodid" property="goodid" jdbcType="INTEGER" />
+    <result column="goodnum" property="goodnum" jdbcType="INTEGER" />
+    <result column="sum" property="sum" jdbcType="DOUBLE" />
+  </resultMap>
+   <!-- 显示用户的购物车里的商品信息 -->
+   <resultMap id="showUserCart" type="com.jstu.model.Cart" >
+    <id column="cartid" property="cartid" jdbcType="INTEGER" />
+    <result column="goodnum" property="goodnum" jdbcType="INTEGER" />
+    <result column="sum" property="sum" jdbcType="DOUBLE" />
+    <association property="goods" javaType="com.jstu.model.Goods">
+    <result column="goodid" property="goodid" jdbcType="INTEGER" />
+    <result column="goodname" property="goodname" jdbcType="VARCHAR" />
+    <result column="goodprice" property="goodprice" jdbcType="DOUBLE" />
+    <result column="googpath" property="googpath" jdbcType="VARCHAR" />
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    cartid, id, goodid, goodnum, sum
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from cart
+    where cartid = #{cartid,jdbcType=INTEGER}
+  </select>
+  <!-- 显示用户的购物车里的商品信息 -->
+  <select id="selectAndShow" resultMap="showUserCart" parameterType="java.lang.Integer" >
+    select *
+    from cart,goods
+    where cart.goodid=goods.goodid and id=#{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from cart
+    where cartid = #{cartid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jstu.model.Cart" >
+    insert into cart (cartid, id, goodid, 
+      goodnum, sum)
+    values (#{cartid,jdbcType=INTEGER}, #{id,jdbcType=INTEGER}, #{goodid,jdbcType=INTEGER}, 
+      #{goodnum,jdbcType=INTEGER}, #{sum,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jstu.model.Cart" >
+    insert into cart
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cartid != null" >
+        cartid,
+      </if>
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="goodid != null" >
+        goodid,
+      </if>
+      <if test="goodnum != null" >
+        goodnum,
+      </if>
+      <if test="sum != null" >
+        sum,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cartid != null" >
+        #{cartid,jdbcType=INTEGER},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="goodid != null" >
+        #{goodid,jdbcType=INTEGER},
+      </if>
+      <if test="goodnum != null" >
+        #{goodnum,jdbcType=INTEGER},
+      </if>
+      <if test="sum != null" >
+        #{sum,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jstu.model.Cart" >
+    update cart
+    <set >
+      <if test="id != null" >
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="goodid != null" >
+        goodid = #{goodid,jdbcType=INTEGER},
+      </if>
+      <if test="goodnum != null" >
+        goodnum = #{goodnum,jdbcType=INTEGER},
+      </if>
+      <if test="sum != null" >
+        sum = #{sum,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where cartid = #{cartid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jstu.model.Cart" >
+    update cart
+    set id = #{id,jdbcType=INTEGER},
+      goodid = #{goodid,jdbcType=INTEGER},
+      goodnum = #{goodnum,jdbcType=INTEGER},
+      sum = #{sum,jdbcType=DOUBLE}
+    where cartid = #{cartid,jdbcType=INTEGER}
+  </update>
+  
+  <select id="getSummary" resultType="com.jstu.model.Cart" parameterType="java.lang.Integer" >
+    select `id`,SUM(`sum`) `sum`
+    from cart
+    where id=#{id,jdbcType=INTEGER}
+  </select>
+</mapper>

@@ -1,0 +1,51 @@
+@CHARSET "UTF-8";
+.main{
+	margin: 150px auto;
+	width: 40%;
+}
+.main .p1{
+	color:orange;
+	text-align: center;
+	font-size: 40px;
+}
+.main .each{
+	margin-top: 10px;
+	border:1px solid white;
+}
+.main .each img{
+	width: 100px;
+	height: 80px;
+	margin-left: 80px;
+}
+.main .each .span1{
+	color:red;
+	font-size: 20px;
+	margin-left: 30px;
+	line-height: 60px;
+}
+.main .each hr{
+    height: 1px;
+    margin-top: -5px;
+}
+.main .each .sum{
+	margin-left: 180px;
+	color: white;
+}
+.main .each .goods{
+	margin-top: 20px;
+}
+.main .each .span2{
+	margin-left: 50px;
+	color:white;
+	font-size: 20px;
+}
+.main .each .button{
+	width: 50px;
+	height: 50px;
+	background-color: white;
+	color: black;
+	border:none;
+	border-radius:5px;
+	font-weight: bold;
+	outline: none;
+}

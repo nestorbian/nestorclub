@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jstu.dao.OrderInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.jstu.model.OrderInfo" >
+    <result column="orderid" property="orderid" jdbcType="INTEGER" />
+    <result column="goodid" property="goodid" jdbcType="INTEGER" />
+    <result column="goodnum" property="goodnum" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="com.jstu.model.OrderInfo" >
+    insert into orderinfo (orderid, goodid, goodnum
+      )
+    values (#{orderid,jdbcType=INTEGER}, #{goodid,jdbcType=INTEGER}, #{goodnum,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jstu.model.OrderInfo" >
+    insert into orderinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderid != null" >
+        orderid,
+      </if>
+      <if test="goodid != null" >
+        goodid,
+      </if>
+      <if test="goodnum != null" >
+        goodnum,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderid != null" >
+        #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="goodid != null" >
+        #{goodid,jdbcType=INTEGER},
+      </if>
+      <if test="goodnum != null" >
+        #{goodnum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="selectByOrderId" parameterType="java.lang.Integer" resultType="com.jstu.model.OrderInfo">
+  select * from orderinfo where orderid=#{orderid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer">
+  delete from orderinfo where orderid=#{orderid,jdbcType=INTEGER}
+  </delete>
+</mapper>
