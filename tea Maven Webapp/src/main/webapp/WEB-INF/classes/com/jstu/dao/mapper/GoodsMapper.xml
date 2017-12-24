@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jstu.dao.GoodsMapper" >
+  <resultMap id="BaseResultMap" type="com.jstu.model.Goods" >
+    <id column="goodid" property="goodid" jdbcType="INTEGER" />
+    <result column="goodname" property="goodname" jdbcType="VARCHAR" />
+    <result column="goodprice" property="goodprice" jdbcType="DOUBLE" />
+    <result column="goodstock" property="goodstock" jdbcType="INTEGER" />
+    <result column="goodinfo" property="goodinfo" jdbcType="VARCHAR" />
+    <result column="googpath" property="googpath" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    goodid, goodname, goodprice, goodstock, goodinfo, googpath
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from goods
+    where goodid = #{goodid,jdbcType=INTEGER}
+  </select>
+  
+  <!--   查询 -->
+
+<select id="goodsSelective" parameterType="com.jstu.model.Goods" resultMap="BaseResultMap">
+    select * from goods
+    <where>
+      <if test="goodid != null" >
+        and goodid=#{goodid,jdbcType=INTEGER}
+      </if>
+      <if test="goodname != null" >
+        and goodname=#{goodname,jdbcType=VARCHAR}
+      </if>
+      <if test="goodprice != null" >
+        and goodprice=#{goodprice,jdbcType=DOUBLE}
+      </if>
+      <if test="goodstock != null" >
+        and goodstock=#{goodstock,jdbcType=INTEGER}
+      </if>
+      <if test="goodinfo != null" >
+        and goodinfo=#{goodinfo,jdbcType=VARCHAR}
+      </if>
+      <if test="googpath != null" >
+        and googpath=#{googpath,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from goods
+    where goodid = #{goodid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jstu.model.Goods" >
+    insert into goods (goodid, goodname, goodprice, 
+      goodstock, goodinfo, googpath
+      )
+    values (#{goodid,jdbcType=INTEGER}, #{goodname,jdbcType=VARCHAR}, #{goodprice,jdbcType=DOUBLE}, 
+      #{goodstock,jdbcType=INTEGER}, #{goodinfo,jdbcType=VARCHAR}, #{googpath,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jstu.model.Goods" >
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="goodid != null" >
+        goodid,
+      </if>
+      <if test="goodname != null" >
+        goodname,
+      </if>
+      <if test="goodprice != null" >
+        goodprice,
+      </if>
+      <if test="goodstock != null" >
+        goodstock,
+      </if>
+      <if test="goodinfo != null" >
+        goodinfo,
+      </if>
+      <if test="googpath != null" >
+        googpath,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="goodid != null" >
+        #{goodid,jdbcType=INTEGER},
+      </if>
+      <if test="goodname != null" >
+        #{goodname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodprice != null" >
+        #{goodprice,jdbcType=DOUBLE},
+      </if>
+      <if test="goodstock != null" >
+        #{goodstock,jdbcType=INTEGER},
+      </if>
+      <if test="goodinfo != null" >
+        #{goodinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="googpath != null" >
+        #{googpath,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jstu.model.Goods" >
+    update goods
+    <set >
+      <if test="goodname != null" >
+        goodname = #{goodname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodprice != null" >
+        goodprice = #{goodprice,jdbcType=DOUBLE},
+      </if>
+      <if test="goodstock != null" >
+        goodstock = #{goodstock,jdbcType=INTEGER},
+      </if>
+      <if test="goodinfo != null" >
+        goodinfo = #{goodinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="googpath != null" >
+        googpath = #{googpath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where goodid = #{goodid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jstu.model.Goods" >
+    update goods
+    set goodname = #{goodname,jdbcType=VARCHAR},
+      goodprice = #{goodprice,jdbcType=DOUBLE},
+      goodstock = #{goodstock,jdbcType=INTEGER},
+      goodinfo = #{goodinfo,jdbcType=VARCHAR},
+      googpath = #{googpath,jdbcType=VARCHAR}
+    where goodid = #{goodid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,106 @@
+@CHARSET "UTF-8";
+.maindiv{
+width:80%;
+margin: 0 auto;
+margin-top:200px;
+}
+.confirmorder{
+	font-size: 37px;
+	font-weight: bold;
+	color:yellow;
+	text-align: center;
+}
+.teaimg{
+position: absolute;
+left:90px;
+top:40px;
+width: 200px;
+height: 150px;
+}
+.maindiv ul{
+	list-style: none;
+	height: 100px;
+}
+.maindiv ul li{
+	float: left;
+	font-size: 30px;
+	font-weight: bold;
+	color: white;
+	margin-left: 85px;
+}
+.maindiv .one{
+	height: 230px;
+	background-color: gray;
+	position: relative;
+}
+.maindiv .one .goodname{
+	font-size:30px;
+	position: absolute;
+	left:360px;
+    top:90px;
+    color: white;
+}
+.maindiv .one .goodprice{
+	font-size:30px;
+	position: absolute;
+	left:555px;
+    top:90px;
+    color: white;
+}
+.maindiv .one .goodnum{
+	border:0px;
+	background-color:gray;
+	width:100px;
+	font-size:30px;
+	position: absolute;
+	left:795px;
+    top:90px;
+    color: white;
+}
+.maindiv .one .goodsum{
+	font-size:30px;
+	position: absolute;
+	left:935px;
+    top:90px;
+    color: white;
+}
+.maindiv .sum{
+	height: 100px;
+	font-size: 35px;
+	color: red;
+	margin-left: 750px;
+}
+.userdiv{
+ width:50%;
+ height:180px;
+ margin-left: 380px;
+ border:4px solid  #FFFF6F;
+ border-radius:40px;
+ text-align: center;
+}
+.userdiv h3{
+ color: white;
+}
+.hh .label button{
+width: 100px;
+height: 80px;
+color:black;
+border:none;
+background-color: gray;
+border-radius:10px;
+}
+.buy{	
+ height:100px;
+ width:150px;
+ margin-top:50px;
+ margin-left: 630px;
+ color:blue;
+ border:2px solid gray;
+ font-size:35px;
+ border-radius:10px;
+ background-color:gray;
+ font-family: 宋体;
+}
+.buy:hover {
+background-color: #FFFF6F;	
+}

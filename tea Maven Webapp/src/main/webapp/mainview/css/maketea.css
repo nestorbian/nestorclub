@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+.main{
+	width:70%;
+	margin: auto;
+}
+.main .eachdiv{
+	margin-top: 100px;
+}
+.main .eachdiv .title{
+	text-align: center;
+	color:white;
+	font-weight: bold;
+}
+.main .eachdiv .aord{
+	text-align: center;
+	font-size: 25px;
+}
+.main .eachdiv .content{
+	text-indent: 40px;
+	font-size: 20px;
+}

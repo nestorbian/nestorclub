@@ -1,0 +1,80 @@
+@CHARSET "UTF-8";
+.main{
+	width:55%;
+	margin:50px auto;
+}
+.main .p1{
+	text-align: center;
+	font-size: 30px;
+	color: white;
+}
+.main .choose{
+	background-color: gray;
+	color: white;
+	border: 2px solid gray;
+	width: 80px;
+	height: 80px;
+	font-size: 22px;
+	font-family: 宋体;
+	margin-left: 50px;
+	outline: none;
+	border-radius:5px;
+}
+.main .choose:HOVER {
+	border: 2px solid orange;
+}
+.main .div1{
+	width: 150px;
+	height: 50px;
+	margin-left: 300px;
+	margin-top: 50px;
+	border-radius:5px;
+}
+.main .div1:HOVER{
+	border:2px solid orange;
+}
+.main .account{
+	background-color: transparent;
+	color:white;
+	border:none;
+	outline: none;
+	font-family: 宋体;
+	font-size: 22px;
+	width: 100px;
+}
+.main .span1{
+	font-size: 22px;
+	font-family: 宋体;
+	color: white;
+}
+.main .div2{
+	margin-top: 30px;
+}
+.main .div2 .span2{
+	font-size: 30px;
+	color: white;
+	background-color: transparent;
+}
+.main .div2 .money{
+	background-color: transparent;
+	color: orange;
+	border:none;
+	font-size: 30px;
+	width: 100px;
+	text-align: center;
+	font-family: 宋体;
+}
+.main .div2 .span3{
+	font-size: 22px;
+}
+.main .recharge{
+	width: 120px;
+	height: 60px;
+	background-color: #FF5809;
+	border: none;
+	margin-left: 320px;
+	margin-top: 80px;
+	color: white;
+	border-radius:8px;
+	outline: none;
+}

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jstu.dao.NewTeaMapper" >
+  <resultMap id="BaseResultMap" type="com.jstu.model.NewTea" >
+    <id column="teaid" property="teaid" jdbcType="INTEGER" />
+    <result column="teaname" property="teaname" jdbcType="VARCHAR" />
+    <result column="tealocation" property="tealocation" jdbcType="VARCHAR" />
+    <result column="teainfo" property="teainfo" jdbcType="VARCHAR" />
+    <result column="teapath" property="teapath" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    teaid, teaname, tealocation, teainfo, teapath
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from newtea
+    where teaid = #{teaid,jdbcType=INTEGER}
+  </select>
+<!--   查询 -->
+
+<select id="teaSelective" parameterType="com.jstu.model.NewTea" resultMap="BaseResultMap">
+    select * from newtea
+    <where>
+      <if test="teaid != null" >
+        and teaid=#{teaid,jdbcType=INTEGER}
+      </if>
+      <if test="teaname != null" >
+        and teaname=#{teaname,jdbcType=VARCHAR}
+      </if>
+      <if test="tealocation != null" >
+        and tealocation=#{tealocation,jdbcType=VARCHAR}
+      </if>
+      <if test="teainfo != null" >
+        and teainfo=#{teainfo,jdbcType=VARCHAR}
+      </if>
+      <if test="teapath != null" >
+        and teapath=#{teapath,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from newtea
+    where teaid = #{teaid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jstu.model.NewTea" >
+    insert into newtea (teaid, teaname, tealocation, 
+      teainfo, teapath)
+    values (#{teaid,jdbcType=INTEGER}, #{teaname,jdbcType=VARCHAR}, #{tealocation,jdbcType=VARCHAR}, 
+      #{teainfo,jdbcType=VARCHAR}, #{teapath,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jstu.model.NewTea" >
+    insert into newtea
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="teaid != null" >
+        teaid,
+      </if>
+      <if test="teaname != null" >
+        teaname,
+      </if>
+      <if test="tealocation != null" >
+        tealocation,
+      </if>
+      <if test="teainfo != null" >
+        teainfo,
+      </if>
+      <if test="teapath != null" >
+        teapath,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="teaid != null" >
+        #{teaid,jdbcType=INTEGER},
+      </if>
+      <if test="teaname != null" >
+        #{teaname,jdbcType=VARCHAR},
+      </if>
+      <if test="tealocation != null" >
+        #{tealocation,jdbcType=VARCHAR},
+      </if>
+      <if test="teainfo != null" >
+        #{teainfo,jdbcType=VARCHAR},
+      </if>
+      <if test="teapath != null" >
+        #{teapath,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jstu.model.NewTea" >
+    update newtea
+    <set >
+      <if test="teaname != null" >
+        teaname = #{teaname,jdbcType=VARCHAR},
+      </if>
+      <if test="tealocation != null" >
+        tealocation = #{tealocation,jdbcType=VARCHAR},
+      </if>
+      <if test="teainfo != null" >
+        teainfo = #{teainfo,jdbcType=VARCHAR},
+      </if>
+      <if test="teapath != null" >
+        teapath = #{teapath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where teaid = #{teaid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jstu.model.NewTea" >
+    update newtea
+    set teaname = #{teaname,jdbcType=VARCHAR},
+      tealocation = #{tealocation,jdbcType=VARCHAR},
+      teainfo = #{teainfo,jdbcType=VARCHAR},
+      teapath = #{teapath,jdbcType=VARCHAR}
+    where teaid = #{teaid,jdbcType=INTEGER}
+  </update>
+</mapper>
